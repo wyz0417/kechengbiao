@@ -1,0 +1,59 @@
+渐习 · GitHub Pages 发布步骤
+
+使用“渐习-GitHub-Pages部署包.zip”，不要使用此前需要 Node.js 的源码包。
+这次不需要安装 Node.js，不需要让电脑一直运行。
+
+1. 解压部署包。进入能看到 index.html、app.js、style.css 等文件的文件夹。
+
+2. 打开你的仓库：
+   https://github.com/wyz0417/kechengbiao
+
+3. 在仓库的 Code 页面点击 Add file → Upload files。
+   把解压后的文件全部拖进去，包括 .nojekyll（如文件管理器显示它）。
+   上传的是文件本身，不是 zip，也不要把外面整层文件夹上传。
+   index.html 必须与仓库已有的 README.md 在同一层。
+   本包中的 GUIDE.md 是使用说明，不会覆盖你原来的 README.md。
+
+4. 等待上传结束，在 Commit changes 区域填写说明，例如“发布渐习网页版”。
+   选择提交到 main 分支，然后点击 Commit changes。
+
+5. 打开仓库的 Pages 设置：
+   https://github.com/wyz0417/kechengbiao/settings/pages
+
+6. 在 Build and deployment 中设置：
+   Source：Deploy from a branch
+   Branch：main
+   Folder：/ (root)
+   点击 Save。
+   如果 main 尚未出现，先确认第 4 步已提交，再刷新页面。
+
+7. 等待 GitHub 构建发布，通常需要几分钟。
+   在仓库 Actions 页查看 pages build and deployment 是否完成并显示绿色勾。
+   Pages 设置页出现“Your site is live at ...”或 Visit site 时，点击查看。
+
+8. 预计发布地址：
+   https://wyz0417.github.io/kechengbiao/
+   这是发布成功后的网站地址，目前不能仅凭地址判断已经上线。
+   分享此地址给朋友，手机和电脑都可以直接打开。
+
+首次使用：
+上传清晰课表 → 开始识别 → 校对课程 → 确认导入 → 点击课程标记学习进度。
+日期区域可以设置本学期第一个周一。
+首次识别需要联网下载识别组件与模型；网络加载失败时可重试或手动填写。
+
+数据说明：
+这个免费版本无需账号，数据只保存在各自的浏览器里，不自动跨设备同步。
+本机旧网站的数据不会自动转到新的 GitHub 网址。
+迁移时在旧网站点“导出备份”，在新网站的导入窗口点“导入 JSON 备份”。
+不要将自己的备份文件、data 文件夹或账号数据库上传到公开仓库。
+清理浏览器站点数据会影响本机记录，建议定期导出备份。
+
+常见问题：
+- 404：确认 Actions 发布成功、分支选择 main、目录为 root、index.html 位于仓库根目录。
+- 显示 README 而非网站：确认 index.html 没有被放入额外文件夹。
+- 网页无样式：确认 style.css 和所有 .js 文件上传完整；不要上传之前的 Node.js 源码包。
+- 更新后还是旧版：等待新一次发布成功，再刷新页面或关闭后重新打开。
+- 无法识别：检查网络对识别组件和模型下载的访问，或使用手动填写功能。
+
+GitHub 官方发布源说明：
+https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
