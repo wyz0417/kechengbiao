@@ -117,4 +117,5 @@ $('recognize').onclick=async()=>{
 };
 $('confirm-import').onclick=()=>{if(!validateCandidates())return;const next={...state,namesOnly:candidateMode==='names',courses:structuredClone(candidates),periods:Math.max(candidateMode==='names'?1:+$('period-count').value,...candidates.map(c=>c.end)),progress:{},demo:false};if(candidateMode==='full'&&$('import-term').value)next.termStart=monday(new Date($('import-term').value+'T12:00:00'));try{next.courses.forEach(c=>c.name=c.name.trim());validateState(next);}catch{importError('请核对课程名称、星期及起止位置，范围为 1–14，结束不能早于开始。');return;}if(!state.demo&&state.courses.length&&!confirm('确认替换当前课表？当前课表和进度将被替换，建议先导出备份。'))return;mutate(()=>state=next,'课表已导入，可以开始记录学习');finishImport();};
 
+const doubaoLink=document.createElement('a');doubaoLink.href='./doubao.html';doubaoLink.className='secondary';doubaoLink.textContent='豆包高准确识别';doubaoLink.setAttribute('aria-label','打开豆包高准确课程表识别');$('manual-import').before(doubaoLink);
 render();
